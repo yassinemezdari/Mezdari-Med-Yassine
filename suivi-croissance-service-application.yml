@@ -1,0 +1,26 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: suivi-croissance-service
+  
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/pedialink_suivi_croissance
+      auto-index-creation: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+
+logging:
+  level:
+    tn.pedialink: DEBUG
+    org.springframework.cloud: DEBUG

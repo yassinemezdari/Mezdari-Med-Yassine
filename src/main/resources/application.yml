@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: pedialink-backend
+  data:
+    mongodb:
+      uri: mongodb+srv://PediaLink:PediaLink@pedialink.0d8a5qd.mongodb.net/pedialink?retryWrites=true&w=majority
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:PediaLinkSuperSecretKeyForJwtToken2024MustBeAtLeast256BitsLong!!}
+    expiration-ms: 86400000  # 24 hours
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:4200}
+  otp:
+    expiration-minutes: 10
+
+logging:
+  level:
+    tn.pedialink: DEBUG
+    org.springframework.security: WARN
+    org.springframework.data.mongodb: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
